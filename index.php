@@ -3,11 +3,12 @@
     //ini_set('display errors', );
     //error_reporting(!_ALL);
     require_once('admin/phpscripts/config.php');
+    require_once('css/main.css.php');
     if(isset($_GET['filter'])){
       $filter = $_GET['filter'];
       //echo "from filterType()";
       // reusabe when it requieres 3 tables single result sett
-      
+
     	$tbl = "tbl_movies";
     	$tbl2 = "tbl_genre";
     	$tbl3 = "tbl_mov_genre";

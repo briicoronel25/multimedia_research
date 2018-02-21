@@ -4,6 +4,7 @@
 //  error_reporting(!_ALL);
 
   require_once('phpscripts/config.php');
+  require_once('css/main.css');
 //  confirm_logged_in();
 if(isset($_POST['submit'])) {
   $fname = trim($_POST['fname']);
