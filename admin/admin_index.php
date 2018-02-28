@@ -1,37 +1,37 @@
-
 <?php
-  //init_set('display');
-//  error_reporting(!_ALL);
+	//ini_set('display_errors',1);
+	//error_reporting(E_ALL);
+	require_once('phpscripts/config.php');
 
-  require_once('phpscripts/config.php');
-  confirm_logged_in();
-  //$ip = $_SERVER['REMOTE_ADDR'];
-  //  echo $ip;
-  /*if(isset($_POST['submit'])){
-    $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
-    if($username !== "" && $password !== ""){ //checking that both are not empty
-        //echo "you can type;)";
-        $result = login($username, $password, $ip);
-        $message = $result;
-    }else{
-    $message = "Please fill in the required fields";
-    echo $message;
-    }
-  }*/
+	//Displays date/time of LAST successful login
+	require_once('./phpscripts/connect.php');
+	confirm_logged_in();
+
+	$lastLogin = "UPDATE `tbl_user` SET `user_lastLogin` = now()  WHERE user_id=1";
+
+	// This is updating our most recent login time into the database
+if(mysqli_multi_query($link, $lastLogin)){
+		echo  "its working"; // "its working" message is showing up but not the time of the last login
+} else {
+		echo " is Broken " . mysqli_error($link);
+}
+
+mysqli_close($link);
+//end last logIn
+
 ?>
-
 <!doctype html>
 <html>
 <head>
-<meta charset ="UTF-8">
-<title>CMS  PORTAL</title>
+<meta charset="UTF-8">
+<title>CMS Portal</title>
 </head>
 <body>
-
-  <h1>Welcome Company Name</h1>
-  <?php
-  echo "<h2>Hi-{$_SESSION['user_name']}</h2>";
-  ?>
+	<h1>Welcome Company Name to your admin page</h1>
+	<?php echo "<h2>Hi-{$_SESSION['user_name']}</h2>"; ?>
+	<a href="admin_createuser.php">Create User</a><br>
+	<a href="admin_edituser.php">Edit User</a><br>
+	<a href="admin_deleteuser.php">Delete User</a><br>
+	<a href="phpscripts/caller.php?caller_id=logout">Sign Out</a>
 </body>
 </html>

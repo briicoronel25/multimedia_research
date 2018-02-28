@@ -5,7 +5,7 @@
 		$tbl = "tbl_movies";
 		$col = "movies_id";
 		$getSingle = getSingle($tbl, $col, $id);
-	} //	CALL THE ID
+	}
 ?>
 <!doctype html>
 <html>
@@ -15,18 +15,16 @@
 </head>
 <body>
 	<?php
-		if(!is_string($getSingle)) {
+		if(!is_string($getSingle)){
 			$row = mysqli_fetch_array($getSingle);
-			echo "<img src = \"images/{$row['movies_cover']}
-			\"alt=\"{$row['movies_title']}\">
-			<h2>{$row['movies_title']}</h2>
-			<p>{$row['movies_year']}</p>
-			<p>{$row['movies_storyline']}</p>
-			<a href = \"index.php\">Back...</a>";
-		} else {
+			echo "<img src=\"images/{$row['movies_cover']}\" alt=\"{$row['movies_title']}\">
+				<h2>{$row['movies_title']}</h2>
+				<p>{$row['movies_year']}</p>
+				<p>{$row['movies_storyline']}</p>
+				<a href=\"index.php\">Back...</a>";
+		}else{
 			echo "<p class=\"error\">{$getSingle}</p>";
 		}
-
-	 ?>
+	?>
 </body>
 </html>
