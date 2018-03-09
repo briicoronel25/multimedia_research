@@ -16,6 +16,8 @@
 			$message = "Please fill in the required fields";
 		}
 	}
+
+
 ?>
 <!doctype html>
 <html>
@@ -42,7 +44,8 @@
 	</form>
 	<!-- sign up Form -->
 	<a id="createUser" href="admin_createuser.php">Create New User</a>
-
+</div>
+</div>
 
 
 </body>

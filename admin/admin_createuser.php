@@ -27,9 +27,9 @@
 
 </head>
 <body>
-	<div class="createuserPage">
+	<div id="createuserPage">
 	<div class="createuserCon">
-	<h1 id="title">Let's register Dude</h1>
+	<h1 id="title">Let's register!</h1>
 	<?php if(!empty($message)){echo $message;} ?>
 	<form action="admin_createuser.php" method="post">
 
