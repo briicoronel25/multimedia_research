@@ -1,17 +1,22 @@
 <?php
 
-	function createUser($fname, $username, $password, $email, $userlvl) {
+	function createUser($fname, $username, $email, $userlvl) {
 		include('connect.php');
-		$userString = "INSERT INTO tbl_user VALUES(NULL, '{$fname}', '{$username}', '{$password}', '{$email}', CURRENT_TIMESTAMP, '{$userlvl}', 'no', 0, 0, 0)";
+		//$user_password= '';
+		$user_password = randomPassword();
+		$enc_password= password_hash($user_password,PASSWORD_BCRYPT); //This function uses BCRYPT ALGORITHM TO ENCRYPT THE PASSWORD
+		echo("<p> or_pass:".$user_password." enc password: ".$enc_password."</p>");
+		$userString = "INSERT INTO tbl_user VALUES(NULL, '{$fname}', '{$username}','{$enc_password}', '{$email}', CURRENT_TIMESTAMP, '{$userlvl}', 'no', 0, 0, 0)";
 		//echo $userString;
 		$userQuery = mysqli_query($link, $userString);
+		$message="";
 		if($userQuery) {
-			redirect_to("admin_index.php");
-				}else{
-			$message = "There was a problem setting up this user.  Maybe reconsider your hiring practices.";
-			return $message;
+			$message.=$user_password;
+		}else{
+			$message.= "There was a problem setting up this user.  Maybe reconsider your hiring practices.";
 		}
 		mysqli_close($link);
+		return $message;
 	}
 
 function editUser($id, $fname, $username, $password, $email) {
@@ -20,7 +25,7 @@ function editUser($id, $fname, $username, $password, $email) {
 	//echo $updatestring;
 	$updatestring = mysqli_query($link, $updatestring);
 	if($updatestring){
-		redirect_to("admin_index.php");
+		$message= "User successfully created!";
 	}else{
 		$message = "There was a problem changing your information, please contact your web admin.";
 		return $message;

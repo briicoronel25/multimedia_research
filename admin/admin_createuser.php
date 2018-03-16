@@ -1,23 +1,4 @@
-<?php
-	//ini_set('display_errors',1);
-	//error_reporting(E_ALL);
-	require_once('phpscripts/config.php');
-	// confirm_logged_in();
-	if(isset($_POST['submit'])) {
-		$fname = trim($_POST['fname']);
-		$username = trim($_POST['username']);
-		$password = trim($_POST['password']);
-		$email = trim($_POST['email']);
-		$userlvl = $_POST['userlvl'];
-		if(empty($userlvl)){
-			$message = "Please select a user level.";
-		}else{
-			$result = createUser($fname, $username, $password, $email, $userlvl);
-			$message = $result;
-		}
-	}
 
-?>
 <!doctype html>
 <html>
 <head>
@@ -41,10 +22,6 @@
 	<input class="inputLog" type="text" name="username" value="	<?php if(!empty($username)){echo $username;} ?>
 "><br><br>
 
-	<label><h2>Password:</h2></label>
-	<input class="inputLog" type="text" name="password" value="	<?php if(!empty($password)){echo $password;} ?>
-"><br><br>
-
 	<label><h2>Email:</h2></label>
 	<input class="inputLog" type="text" name="email" value="	<?php if(!empty($email)){echo $email;} ?>
 "><br><br>
@@ -60,5 +37,30 @@
 	</form>
  </div>
 </div>
+
+<?php
+	//ini_set('display_errors',1);
+	//error_reporting(E_ALL);
+	require_once('phpscripts/config.php');
+	require_once('phpscripts/send_mail.php');
+	include ('phpscripts/PHPMailer.php');
+	include ('phpscripts/SMTP.php');
+	include ('phpscripts/OAuth.php');
+	// confirm_logged_in();
+	if(isset($_POST['submit'])) {
+		$fname = trim($_POST['fname']);
+		$username = trim($_POST['username']);
+		$email = trim($_POST['email']);
+		$userlvl = $_POST['userlvl'];
+		if(empty($userlvl)){
+			$message = "Please select a user level.";
+		}else{
+			$pass = createUser($fname, $username, $email, $userlvl);
+			$result= sendMail($fname,$username,$pass,$email);
+			redirect_to("admin_index.php");
+		}
+	}
+
+?>
 </body>
 </html>

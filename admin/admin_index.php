@@ -13,11 +13,11 @@
 
 		// setting if statments and then echoing out our message, if the hour is greater than our equal to *insert number* AND is less than and equal to *insert new hour* the message will echo
 		if ( $Hour >= 5 && $Hour <= 11 ) {
-		    echo "<h2 class='time-message'>Morning dude, did you have some coffee already?</h2>";
+		    //echo "<h2 class='time-message'>Morning dude, did you have some coffee already?</h2>";
 		} else if ( $Hour >= 12 && $Hour <= 18 ) {
-		    echo "<h2 class='time-message'>Good Afternoon dude, Keep it great! </h2>";
+		    //echo "<h2 class='time-message'>Good Afternoon dude, Keep it great! </h2>";
 		} else if ( $Hour >= 19 || $Hour <= 4 ) {
-		    echo "<h2 class='time-message'>Whatsup dude, ready to party?</h2>";
+		    //echo "<h2 class='time-message'>Whatsup dude, ready to party?</h2>";
 		}
 
 		mysqli_close($link);
@@ -33,8 +33,8 @@
 <body>
 	<div id="welcomePage">
 		<div class="welcomeCon">
-	<h1>Welcome Company Name to your admin page</h1>
-	<?php echo "<h2>Hi {$_SESSION['user_name']}</h2><p>You last logged in {$_SESSION['user_date']}</p>"; ?>
+	<h1>Welcome to Your Admin Page</h1>
+	<?php echo "<h2>Hi {$_SESSION['user_name']}</h2><p class='p_logged'>You last logged in {$_SESSION['user_date']}</p>"; ?>
 	<a href="admin_createuser.php">Create User</a><br>
 	<a href="admin_edituser.php">Edit User</a><br>
 	<a href="admin_deleteuser.php">Delete User</a><br>

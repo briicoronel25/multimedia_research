@@ -1,3 +1,7 @@
+body{
+	margin-top:0%;
+}
+
 #loginPage {
 	background: #FF9B85;
 	height: 100vh;
@@ -58,11 +62,16 @@ label h2{
 }
 
 a {
+	margin-bottom: 4%;
 	color: white;
 	font-size: 18px !important;
 	float: left;
-  width: 100%;
-  clear: both;
+	width: 100%;
+	clear: both;
+}
+
+a:hover{
+	color: blue;
 }
 
 #createUser
@@ -111,4 +120,73 @@ select {
 	left: 50%;
 	transform: translate(-50%, -50%);
   text-align: center;
+}
+
+.p_logged{
+	font-style:italic;
+}
+
+/*Edit User PAGE*/
+#editPage {
+	background: #FF9B85;
+	height:100%;
+}
+
+.edit_title{
+	text-align:center;
+	margin-top:0%;
+}
+
+.edit_label{
+	width: 100%;
+	margin-bottom:2%;
+	text-align:center;
+	display:block;
+	font-size:1.5em;
+}
+
+.edit_input{
+	width: 50%;
+	background-color:transparent;
+	margin: 0 auto;
+	text-align:center;
+	display:block;
+	float:initial;
+	border-bottom:2px solid #fff
+}
+
+.edit_container{
+	margin-bottom: 4%;
+}
+
+#edit_submit{
+	width:25%;
+	border:2px solid #fff;
+	margin-bottom:10%;
+}
+
+/*Delete User PAGE*/
+#deletePage {
+	background: #FF9B85;
+	height:100%;
+}
+
+#delete_title{
+	text-align:center;
+	margin-top:0;
+}
+
+.delete_name{
+	text-align:center;
+	font-size:1.5em;
+	margin-bottom:2%;
+}
+
+.delete_link{
+	text-align:center;
+	margin-bottom:4%;
+}
+
+#deletePage a:last-of-type{
+	margin-bottom:0%;
 }

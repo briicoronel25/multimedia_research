@@ -20,6 +20,7 @@
 <html>
 <head>
 <title>Welcome to the Finest Selection of Blu-rays on the internets!</title>
+<link href="./css/main.css" rel="stylesheet" type="text/css" media="screen">
 </head>
 <body>
 	<?php
@@ -29,8 +30,8 @@
 			while($row = mysqli_fetch_array($getMovies)){
 				echo "<img src=\"images/{$row['movies_cover']}\" alt=\"{$row['movies_title']}\">
 					<h2>{$row['movies_title']}</h2>
-					<p>{$row['movies_year']}</p>
-					<a href=\"details.php?id={$row['movies_id']}\">More Details...</a>
+					<p class='p_year'>{$row['movies_year']}</p>
+					<a class='a_details' href=\"details.php?id={$row['movies_id']}\">More Details...</a>
 					<br><br>";
 			}
 		}else{

@@ -9,7 +9,12 @@
 
 	function logged_out() {
 		session_destroy();
-		redirect_to("../admin_login.php");
+		if(substr($_SERVER[REQUEST_URI], -strlen("admin_edituser.php")) === "admin_edituser.php"){
+			redirect_to("admin_login.php");
+		}
+		else{
+			redirect_to("../admin_login.php");
+		}
 	}
 
 ?>
