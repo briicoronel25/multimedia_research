@@ -3,7 +3,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 function sendMail($name,$username,$password,$email){
 	try {
 		$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
-		//Server settings                                 // Enable verbose debug output 
+		//$mail->SMTPDebug = 2;// Enable verbose debug output 
 		$mail->isSMTP();                                      // Set mailer to use SMTP
 		$mail->Host = 'smtp.live.com';  // Specify main and backup SMTP servers
 		$mail->SMTPAuth = true;                               // Enable SMTP authentication
